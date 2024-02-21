@@ -1,7 +1,6 @@
 import turtle
 import pandas
-# import warnings
-# warnings.filterwarnings(action="ignore", category=DeprecationWarning)
+
 
 data = pandas.read_csv('50_states.csv')
 
@@ -14,21 +13,34 @@ image = "blank_states_img.gif"
 screen.addshape(image)
 turtle.shape(image)
 
-print(data)
+#print(data)
 
 state_dict = data["state"].to_dict()
+state_list = data["state"].to_list()
+
+coords = list(zip(data.x, data.y))
+#print(coords)
 
 
-
-
-
-print(state_dict)
+#print(state_dict)
 
 answer_state = screen.textinput(title="Guess the State", prompt="Name a State!").title()
-
+#
 if answer_state in state_dict.values():
-    print("Progress")
-    for
+    for state in state_list:
+        if state == answer_state:
+            xy_index = state_list.index(state)
+            print(xy_index)
+
+            x = coords[xy_index][0]
+            y = coords[xy_index][1]
+
+
+
+
+# if answer_state in state_dict.values():
+#     print("Progress")
+
 
 ###Works###
 #row_index = data.index.get_loc(data[data["state"] == answer_state].index[0])
